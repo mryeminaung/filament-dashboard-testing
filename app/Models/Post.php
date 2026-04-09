@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-#[Fillable(['title', 'slug', 'content', 'is_featured', 'is_published', 'status', 'author_id', 'category_id'])]
+#[Fillable(['title', 'slug', 'content', 'is_featured', 'is_published', 'status', 'author_id', 'category_id', 'thumbnail'])]
 class Post extends Model
 {
     public function category(): BelongsTo

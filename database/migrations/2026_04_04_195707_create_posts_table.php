@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->text('title');
             $table->string('slug')->unique();
+            $table->string('thumbnail');
             $table->text('content');
             $table->string('author_id');
             $table->boolean('is_published')->default(false);

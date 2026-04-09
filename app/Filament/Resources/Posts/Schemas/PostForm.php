@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Posts\Schemas;
 
 use App\Enums\PostStatus;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Select;
@@ -44,11 +45,19 @@ class PostForm
                             ->preload()
                             ->searchable(),
                         MarkdownEditor::make('content')
+                            ->fileAttachmentsDisk('public')
+                            ->fileAttachmentsDirectory('post-images')
                             ->required()
                             ->columnSpanFull(),
                     ])->columnSpan(4),
                 Section::make()
                     ->schema([
+                        FileUpload::make('thumbnail')
+                            ->label('Tumbnail Image')
+                            ->previewable(true)
+                            ->directory('post-thumbnails')
+                            ->visibility('public')
+                            ->required(),
                         TextInput::make('author_name')
                             ->label('Author')
                             ->default(fn (): ?string => auth()->user()?->name)

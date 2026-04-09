@@ -8,6 +8,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Table;
@@ -18,11 +19,11 @@ class PostsTable
     {
         return $table
             ->columns([
+                ImageColumn::make('thumbnail')
+                    ->label('Thumbnail'),
                 TextColumn::make('title')
                     ->sortable()
                     ->searchable(),
-                // TextColumn::make('author.name')
-                //     ->label('Author'),
                 TextColumn::make('status')
                     ->label('Status')
                     ->badge()
